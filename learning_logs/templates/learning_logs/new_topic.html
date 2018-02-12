@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Add a new topic</h2>
+{% endblock header %}
+
+{% block content %}
+
+
+    <form action="{% url 'learning_logs:new_topic' %}" method='post' class="form">  {# action指定数据发送位置 #}
+    {% csrf_token %}  {# 防止攻击者；利用表单获得对服务器未经授权的访问 #}
+{#    {{ form.as_p }}  {# 显示表单，as_p以段落格式渲染所有表单元素 #}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button name="submit" class="btn btn-primary">add topic</button>
+    {% endbuttons %}
+    </form>
+{% endblock content %}

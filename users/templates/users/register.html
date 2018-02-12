@@ -1,0 +1,11 @@
+{% extends 'learning_logs/base.html' %}
+
+
+{% block content %}
+    <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit" class="btn btn-primary">register</button>
+    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">  <!--隐藏域，注册后重定向-->
+    </form>
+{% endblock content %}
